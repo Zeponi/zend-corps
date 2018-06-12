@@ -16,4 +16,25 @@ class SetorController extends AbstractActionController
     {
         return new ViewModel();
     }
+    /**
+     * Action to add and change records
+    */
+    public function editAction()
+    {
+        
+    }
+    /**
+     * Action to save a record
+     */
+    public function saveAction()
+    {
+        
+    }
+    /**
+     * Action to remove records
+     */
+    public function deleteAction()
+    {
+        
+    }
 }
