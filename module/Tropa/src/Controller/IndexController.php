@@ -5,16 +5,15 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-/**
- * List of enabled modules for this application.
- *
- * This should be an array of module namespaces used in the application.
- */
-return [
-    'Zend\Mvc\I18n',
-    'Zend\I18n',
-    'Zend\Router',
-    'Zend\Validator',
-    'Application',
-    'Tropa'
-];
+namespace Tropa\Controller;
+
+use Zend\Mvc\Controller\AbstractActionController;
+use Zend\View\Model\ViewModel;
+
+class IndexController extends AbstractActionController
+{
+    public function indexAction()
+    {
+        return new ViewModel();
+    }
+}
