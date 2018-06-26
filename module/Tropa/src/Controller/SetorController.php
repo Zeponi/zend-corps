@@ -14,7 +14,9 @@ class SetorController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(
+        	['models' => $this->table->fetchAll()]
+        );
     }
     /**
      * Action to add and change records
@@ -36,5 +38,12 @@ class SetorController extends AbstractActionController
     public function deleteAction()
     {
         
+    }
+    
+    private $table;
+    
+    public function __construct($table)
+    {
+    	$this->table = $table;
     }
 }
