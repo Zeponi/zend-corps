@@ -7,9 +7,12 @@
 
 namespace Tropa;
 
-use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
+use Tropa\Model\SetorTable;
+use Zend\Db\ResultSet\ResultSet;
+use Tropa\Model\Setor;
+use Zend\Db\TableGateway\TableGateway;
 
 return [
     'router' => [
@@ -36,7 +39,10 @@ return [
         ],
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\SetorController::class => InvokableFactory::class
+            Controller\SetorController::class => function($sm) {
+            	$table = $sm->get(SetorTable::class);
+            	return new Controller\SetorController($table);
+            }
         ],
     ],
     'view_manager' => [
@@ -55,4 +61,19 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+	'service_manager' => [
+		'factories' => [
+				SetorTable::class => function($sm) {
+					$tableGateway = $sm->get('SetorTableGateway');
+					$table = new SetorTable($tableGateway);
+					return $table;
+				},
+				'SetorTableGateway' => function ($sm) {
+					$dbAdapter = $sm->get('Zend\Db\Adapter');
+					$resultSetPrototype = new ResultSet();
+					$resultSetPrototype->setArrayObjectPrototype(new Setor());
+					return new TableGateway('setor', $dbAdapter,null, $resultSetPrototype);
+				}
+		],
+	]
 ];
