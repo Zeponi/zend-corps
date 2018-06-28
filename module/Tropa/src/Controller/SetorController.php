@@ -9,6 +9,7 @@ namespace Tropa\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Tropa\Form\Setor as SetorForm;
 
 class SetorController extends AbstractActionController
 {
@@ -23,7 +24,9 @@ class SetorController extends AbstractActionController
     */
     public function editAction()
     {
-        
+    	$form = new SetorForm();
+    	$form->get('submit')->setValue('Cadastrar');
+    	return ['form' => $form];
     }
     /**
      * Action to save a record
