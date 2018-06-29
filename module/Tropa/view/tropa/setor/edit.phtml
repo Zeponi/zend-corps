@@ -10,8 +10,6 @@ $form->setAttribute ( 'action', $this->url ( 'tropa', [
 		'controller' => 'setor' 
 ] ) );
 $form->prepare ();
-echo $this->form ()->openTag ( $form );
-echo $this->formRow ( $form->get ( 'codigo' ) );
-echo $this->formRow ( $form->get ( 'nome' ) );
-echo $this->formSubmit ( $form->get ( 'submit' ) );
-echo $this->form ()->closeTag ();
+echo $this->form()->openTag($form);
+echo $this->formcollection($form);
+echo $this->form()->closeTag();

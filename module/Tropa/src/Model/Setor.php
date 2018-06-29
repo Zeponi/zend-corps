@@ -83,4 +83,14 @@ class Setor {
 		}
 		return $this->inputFilter;
 	}
+	/**
+	 *
+	 * @return array
+	 */
+	public function getArrayCopy() {
+		return [
+				'codigo'=>$this->codigo,
+				'nome'=>$this->nome
+		];
+	}
 }
