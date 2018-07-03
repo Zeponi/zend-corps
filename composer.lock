@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2e21e44b8fb62420f00961082f31328e",
+    "content-hash": "aaeb9e9f4e5c555632d00b4bcde4b4d4",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -681,6 +681,52 @@
                 "zf"
             ],
             "time": "2018-05-16T16:39:13+00:00"
+        },
+        {
+            "name": "zendframework/zend-i18n-resources",
+            "version": "2.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/zend-i18n-resources.git",
+                "reference": "530ab0af94ed1dd542665e6041d92297f7347ef3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zendframework/zend-i18n-resources/zipball/530ab0af94ed1dd542665e6041d92297f7347ef3",
+                "reference": "530ab0af94ed1dd542665e6041d92297f7347ef3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.6 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.7.27 || ^6.5.8 || ^7.1.5",
+                "zendframework/zend-coding-standard": "~1.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6.x-dev",
+                    "dev-develop": "2.7.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "src/Resources.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": "Provides validator translations for zend-i18n's Translator",
+            "keywords": [
+                "ZendFramework",
+                "resources",
+                "translations",
+                "zf"
+            ],
+            "time": "2018-04-30T14:47:38+00:00"
         },
         {
             "name": "zendframework/zend-inputfilter",

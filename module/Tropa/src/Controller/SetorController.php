@@ -7,6 +7,10 @@
  */
 namespace Tropa\Controller;
 
+use Zend\Mvc\I18n\Translator as MvcTranslator;
+use Zend\Validator\AbstractValidator;
+use Zend\I18n\Translator\Translator;
+use Zend\I18n\Translator\Resources;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\Session\Storage\SessionArrayStorage;
 use Zend\View\Model\ViewModel;
@@ -32,11 +36,13 @@ class SetorController extends AbstractActionController {
 			$setor->exchangeArray ( $sessionStorage->model->toArray () );
 			unset ( $sessionStorage->model );
 			$form->setInputFilter ( $setor->getInputFilter () );
+			$this->initValidatorTranslator ();
 		}
 		$form->bind ( $setor );
 		$form->isValid ();
 		return [ 
-				'form' => $form 
+				'form' => $form,
+				'title' => empty($codigo) ? 'Incluir' : 'Alterar' 
 		];
 	}
 	/**
@@ -76,7 +82,14 @@ class SetorController extends AbstractActionController {
 		] );
 	}
 	private $table;
-	public function __construct($table) {
+	public function __construct($table, $sessionManager) {
 		$this->table = $table;
+		$sessionManager->start ();
+	}
+	protected function initValidatorTranslator() {
+		$translator = new Translator ();
+		$mvcTranslator = new MvcTranslator ( $translator );
+		$mvcTranslator->addTranslationFilePattern ( 'phparray', Resources::getBasePath (), Resources::getPatternForValidator () );
+		AbstractValidator::setDefaultTranslator ( $mvcTranslator );
 	}
 }

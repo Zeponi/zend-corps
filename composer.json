@@ -16,6 +16,7 @@
         "zendframework/zend-component-installer": "^1.0 || ^0.7 || ^1.0.0-dev@dev",
         "zendframework/zend-db": "^2.8.2",
         "zendframework/zend-form": "^2.9.2",
+        "zendframework/zend-i18n-resources": "^2.5.2",
         "zendframework/zend-mvc": "^3.0.1",
         "zendframework/zend-i18n": "^2.7.3",
         "zendframework/zend-mvc-i18n": "^1.0.0",

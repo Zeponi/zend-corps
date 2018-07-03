@@ -1,6 +1,10 @@
 <?php
+$this->headScript()->prependFile($this->basePath() . '/js/delete.js', 'text/javascript');
 $title = 'Setores ';
-$this->headTitle ( $title );
+$this->headTitle($title);
+$this->placeholder('url')->edit = $this->urlEdit;
+$this->placeholder('url')->delete = $this->urlDelete;
+$this->partialLoop()->setObjectKey('model');
 ?>
 <h1><?=$this->escapeHtml($title)?></h1>
 <p>
@@ -20,8 +24,9 @@ $this->headTitle ( $title );
 		<td><?=$this->escapeHtml($model->nome)?></td>
 		<td><a
 			href="<?=$this->url ( 'tropa', array ('action' => 'edit','controller' => 'setor','key' => $model->codigo ) )?>">Editar</a>
-			<a
-			href="<?=$this->url ( 'tropa', array ('action' => 'delete','controller' => 'setor','key' => $model->codigo ) )?>">Remover</a></td>
+			<button class="delete"
+				url="<?=$this->url ( 'tropa', array ('action' => 'delete','controller' => 'setor','key' => $model->codigo ) )?>">Remover</button>
+		</td>
 	</tr>
 <?php endforeach ?>
 </table>
