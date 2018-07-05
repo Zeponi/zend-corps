@@ -36,3 +36,7 @@ footer {
 	position: absolute;
 	width: 98%;
 }
+
+input,select {
+	display: block;
+}
