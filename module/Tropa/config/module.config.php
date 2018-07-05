@@ -66,6 +66,18 @@ return [
     ],
 	'service_manager' => [
 		'factories' => [
+				LanternaTable::class => function($sm) {
+					$tableGateway = $sm->get('LanternaTableGateway');
+					$table = new LanternaTable($tableGateway);
+					return $table;
+				},
+				'LanternaTableGateway' => function ($sm) {
+					$dbAdapter = $sm->get('Zend\Db\Adapter');
+					$resultSetPrototype = new ResultSet();
+					$resultSetPrototype->setArrayObjectPrototype(
+							new Lanterna());
+					return new TableGateway('lanterna', $dbAdapter, null, $resultSetPrototype);
+				},
 				SetorTable::class =>  function($sm) {
                     $tableGateway = $sm->get('SetorTableGateway');
                     $table = new SetorTable($tableGateway);
